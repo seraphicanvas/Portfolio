@@ -1,7 +1,4 @@
-// Animated background: Gradients are animated via CSS keyframes
-// You can optionally add extra interactive JS here (e.g., scroll effects, modal for gallery, etc.)
-
-// Example: Smooth scroll for navigation
+// Smooth scroll for navigation
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', function(e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -12,27 +9,27 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
-// Example: Gallery modal (lightbox)
-document.querySelectorAll('.gallery-item img').forEach(img => {
+// Project image modal (lightbox effect)
+document.querySelectorAll('.project-card img').forEach(img => {
   img.addEventListener('click', function () {
     const modal = document.createElement('div');
     modal.className = 'modal';
-    modal.style.position = 'fixed';
-    modal.style.top = 0;
-    modal.style.left = 0;
-    modal.style.width = '100vw';
-    modal.style.height = '100vh';
-    modal.style.background = 'rgba(10,10,24,0.92)';
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    modal.style.zIndex = 9999;
+    Object.assign(modal.style, {
+      position: 'fixed',
+      top: 0, left: 0, width: '100vw', height: '100vh',
+      background: 'rgba(23,22,40,0.97)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      zIndex: 9999,
+    });
 
     const imgClone = document.createElement('img');
     imgClone.src = this.src;
-    imgClone.style.maxWidth = '90vw';
-    imgClone.style.maxHeight = '90vh';
-    imgClone.style.borderRadius = '16px';
+    Object.assign(imgClone.style, {
+      maxWidth: '90vw',
+      maxHeight: '90vh',
+      borderRadius: '18px',
+      boxShadow: '0 6px 40px 0 rgba(162,89,255,0.19)'
+    });
     modal.appendChild(imgClone);
 
     modal.addEventListener('click', () => document.body.removeChild(modal));
